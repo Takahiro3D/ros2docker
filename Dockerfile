@@ -38,4 +38,4 @@ RUN ./ros2_setup_scripts_ubuntu.sh && \
 COPY ./ros_entrypoint.sh /
 
 ENTRYPOINT ["/ros_entrypoint.sh"]
-CMD ["bash"]
+CMD ["/bin/bash"]
