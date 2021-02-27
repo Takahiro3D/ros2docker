@@ -1,4 +1,5 @@
-FROM amd64/ubuntu:focal
+FROM nvidia/cudagl:11.2.0-devel-ubuntu20.04
+#FROM amd64/ubuntu:focal
 LABEL maintainer="Dorebom<dorebom.b@gmail.com>"
 
 ENV ROS_DISTRO foxy
@@ -17,6 +18,7 @@ RUN apt-get update -q && \
             lsb-release \
             locales \
             bash-completion \
+            glmark2 \
             tzdata && \
     rm -rf /var/lib/apt/lists/*
 
