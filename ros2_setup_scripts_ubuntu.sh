@@ -8,6 +8,8 @@ set -eu
 # REF: https://github.com/Tiryoh/ros2_setup_scripts_ubuntu/blob/master/run.sh
 # by https://github.com/Tiryoh, Apache-2.0 License
 
+# REF https://gbiggs.github.io/rosjp_ros2_intro/computer_prep_linux.html
+
 CHOOSE_ROS_DISTRO=foxy # or dashing
 INSTALL_PACKAGE=desktop # or ros-base
 
@@ -38,6 +40,7 @@ sudo apt-get install -yq \
         python-sphinx && \
 		sudo rm -rf /var/lib/apt/lists/*
 
+# Install ROS2 packages
 curl -Ls https://raw.githubusercontent.com/ros/rosdistro/master/ros.key | sudo apt-key add -
 sudo sh -c 'echo "deb [arch=$(dpkg --print-architecture)] http://packages.ros.org/ros2/ubuntu $(lsb_release -cs) main" > /etc/apt/sources.list.d/ros2-latest.list'
 sudo apt-get  update
@@ -58,11 +61,13 @@ sudo apt-get install -yq \
         ros-$CHOOSE_ROS_DISTRO-navigation2 \
         ros-$CHOOSE_ROS_DISTRO-nav2-bringup
 
+# Add ROS2 env values in bash
 grep -F "source /opt/ros/$CHOOSE_ROS_DISTRO/setup.bash" ~/.bashrc ||
 echo "source /opt/ros/$CHOOSE_ROS_DISTRO/setup.bash" >> ~/.bashrc
 
 set +u
 
+# Set ROS2 env values
 source /opt/ros/$CHOOSE_ROS_DISTRO/setup.bash
 
 echo "success installing ROS2 $CHOOSE_ROS_DISTRO"

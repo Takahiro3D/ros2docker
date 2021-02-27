@@ -30,7 +30,7 @@ WORKDIR /home/${USER_NAME}
 ENV HOME=/home/${USER_NAME}
 ENV LANG=en_US.UTF-8 LANGUAGE=en_US:en LC_ALL=en_US.UTF-8
 
-# Install ROS2
+# Install ROS2 packages and setting
 COPY ./ros2_setup_scripts_ubuntu.sh /home/developer/ros2_setup_scripts_ubuntu.sh
 RUN sed -e 's/^\(CHOOSE_ROS_DISTRO=.*\)/#\1\nCHOOSE_ROS_DISTRO=$ROS_DISTRO/g' -i ros2_setup_scripts_ubuntu.sh
 RUN ./ros2_setup_scripts_ubuntu.sh && \
