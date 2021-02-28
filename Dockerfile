@@ -39,5 +39,14 @@ RUN ./ros2_setup_scripts_ubuntu.sh && \
     sudo rm -rf /var/lib/apt/lists/*
 COPY ./ros_entrypoint.sh /
 
+RUN sudo apt-get update -q && \
+    sudo apt-get upgrade -yq && \
+    sudo apt-get install -yq \
+            python3-dev \
+            python3-pip
+
+RUN pip3 install --upgrade pip
+RUN pip3 install Pyserial
+
 ENTRYPOINT ["/ros_entrypoint.sh"]
 CMD ["/bin/bash"]
