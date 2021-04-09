@@ -19,7 +19,7 @@ sh build.sh
 
 # 3. run
 
-Set `USER_NAME` and `WORKSPACE` in run.sh before running.
+Set `USER_NAME` and `WORKSPACE` in run.sh before running as follows:
 
 ```sh:run.sh
 USER_NAME=<host_user name>
@@ -43,3 +43,8 @@ Run as follows:
 sh run.sh
 ```
 
+# Cited
+
+- https://github.com/Tiryoh/docker-ros2-desktop-vnc
+- https://github.com/Tiryoh/ros2_setup_scripts_ubuntu
+- https://qiita.com/tomp/items/50081b99df7963462488
