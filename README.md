@@ -13,7 +13,7 @@ https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.
 
 # 2. build
 
-```bash
+```sh
 sh build.sh
 ```
 
@@ -21,13 +21,25 @@ sh build.sh
 
 Set `USER_NAME` and `WORKSPACE` in run.sh before running.
 
-```bash
+```sh:run.sh
 USER_NAME=<host_user name>
 WORKSPACE=<host_directory>
+
+docker run --rm -it --privileged \
+        --gpus all \
+        --device=/dev/ttyUSB0:/dev/ttyUSB0 \
+        -v /tmp/.X11-unix:/tmp/.X11-unix \
+        -v /etc/localtime:/etc/localtime \
+        -v /home/$USER_NAME/$WORKSPACE:/home/developer/ros2_ws \
+        -e DISPLAY=$DISPLAY \
+        --name glvnd \
+        ros2docker:foxy
 ```
+where, `--device=/dev/ttyUSB0:/dev/ttyUSB0` means an optional command to use usb device on host side.
 
 Run as follows:
-```bash
+
+```sh
 sh run.sh
 ```
 
