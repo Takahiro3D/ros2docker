@@ -21,13 +21,13 @@ sh build.sh
 
 Set `USER_NAME` and `WORKSPACE` in run.sh before running.
 
-```bash:run.sh
-USER_NAME=matomato
-WORKSPACE=workspace/github/ros2docker/ros2_ws
+```bash
+USER_NAME=<host_user name>
+WORKSPACE=<host_directory>
 ```
 
 Run as follows:
-```bash:
+```bash
 sh run.sh
 ```
 
