@@ -13,6 +13,8 @@ https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.
 
 # 2. build
 
+Build as follows:
+
 ```sh
 sh build.sh
 ```
