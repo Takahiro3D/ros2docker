@@ -14,6 +14,7 @@ RUN apt-get update -q && \
             git \
             build-essential \
             vim \
+            nano \
             sudo \
             lsb-release \
             locales \

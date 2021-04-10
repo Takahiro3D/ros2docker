@@ -65,6 +65,9 @@ sudo apt-get install -yq \
 grep -F "source /opt/ros/$CHOOSE_ROS_DISTRO/setup.bash" ~/.bashrc ||
 echo "source /opt/ros/$CHOOSE_ROS_DISTRO/setup.bash" >> ~/.bashrc
 
+echo "export XDG_RUNTIME_DIR=/some/directory/you/specify" >> ~/.bashrc 
+echo "export RUNLEVEL=3" >> ~/.bashrc
+
 set +u
 
 # Set ROS2 env values
