@@ -46,8 +46,22 @@ RUN sudo apt-get update -q && \
             python3-dev \
             python3-pip
 
+# Install micro XRCE-DDS Agent
+RUN git clone https://github.com/eProsima/Micro-XRCE-DDS-Agent.git
+WORKDIR /home/${USER_NAME}/Micro-XRCE-DDS-Agent
+#RUN ls
+RUN git checkout -b v1.3.0 refs/tags/v1.3.0
+RUN mkdir build
+WORKDIR /home/${USER_NAME}/Micro-XRCE-DDS-Agent/build
+RUN cmake .. && \
+    make && \
+    sudo make install
+RUN sudo ldconfig /usr/local/lib/
+
 RUN pip3 install --upgrade pip
 RUN pip3 install Pyserial
+
+WORKDIR /home/${USER_NAME}
 
 ENTRYPOINT ["/ros_entrypoint.sh"]
 CMD ["/bin/bash"]
