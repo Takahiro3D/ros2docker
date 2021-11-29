@@ -35,7 +35,7 @@ docker run --rm -it --privileged \
         -v /home/$USER_NAME/$WORKSPACE:/home/developer/ros2_ws \
         -e DISPLAY=$DISPLAY \
         --name glvnd \
-        ros2docker:foxy
+        ros2docker:galactic
 ```
 where, `--device=/dev/ttyUSB0:/dev/ttyUSB0` means an optional command to use usb device on host side.
 

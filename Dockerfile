@@ -2,7 +2,7 @@ FROM nvidia/cudagl:11.2.0-devel-ubuntu20.04
 #FROM amd64/ubuntu:focal
 LABEL maintainer="Dorebom<dorebom.b@gmail.com>"
 
-ENV ROS_DISTRO foxy
+ENV ROS_DISTRO galactic
 ENV USER_NAME developer
 
 ENV DEBIAN_FRONTEND=noninteractive
@@ -43,7 +43,7 @@ COPY ./ros_entrypoint.sh /
 RUN sudo apt-get update -q && \
     sudo apt-get upgrade -yq && \
     sudo apt-get install -yq \
-            python3-dev \
+            python3.8-dev\
             python3-pip
 
 # Install micro XRCE-DDS Agent
@@ -60,8 +60,26 @@ RUN sudo ldconfig /usr/local/lib/
 
 RUN pip3 install --upgrade pip
 RUN pip3 install Pyserial
+RUN pip3 install open3d \
+                vispy \
+                pyside2
 
 WORKDIR /home/${USER_NAME}
+COPY ./MagikEye/pymkeapi-1.2.4-py3-none-any.whl /home/developer/pymkeapi-1.2.4-py3-none-any.whl
+COPY ./MagikEye/pymkeviewer-1.2.4-py3-none-any.whl /home/developer/pymkeviewer-1.2.4-py3-none-any.whl
+RUN pip3 install ./pymkeapi-1.2.4-py3-none-any.whl
+RUN pip3 install ./pymkeviewer-1.2.4-py3-none-any.whl
+
+RUN pip3 install annoy scikit-learn
+
+WORKDIR /home/${USER_NAME}
+# Install ROS2 add-on packages and setting
+RUN sudo apt-get update
+COPY ./ros2_setup_scripts_add_on.sh /home/developer/ros2_setup_scripts_add_on.sh
+RUN sed -e 's/^\(CHOOSE_ROS_DISTRO=.*\)/#\1\nCHOOSE_ROS_DISTRO=$ROS_DISTRO/g' -i ros2_setup_scripts_add_on.sh
+RUN ./ros2_setup_scripts_add_on.sh && \
+    sudo rm -rf /var/lib/apt/lists/*
+COPY ./ros_entrypoint.sh /
 
 ENTRYPOINT ["/ros_entrypoint.sh"]
 CMD ["/bin/bash"]

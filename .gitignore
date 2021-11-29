@@ -51,3 +51,6 @@ qtcreator-*
 CATKIN_IGNORE
 
 ros2_ws/*
+backup_ros2ws/*
+MagikEye/*
+old_ros2_ws/*

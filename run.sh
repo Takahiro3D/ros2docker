@@ -1,5 +1,6 @@
 USER_NAME=matomato
 WORKSPACE=workspace/github/ros2docker/ros2_ws
+CHOOSE_ROS_DISTRO=galactic
 
 docker run --rm -it --privileged \
         --gpus all \
@@ -10,4 +11,4 @@ docker run --rm -it --privileged \
         -v /home/$USER_NAME/$WORKSPACE:/home/developer/ros2_ws \
         -e DISPLAY=$DISPLAY \
         --name glvnd \
-        ros2docker:foxy
+        ros2docker:$CHOOSE_ROS_DISTRO

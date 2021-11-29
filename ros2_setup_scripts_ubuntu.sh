@@ -10,7 +10,7 @@ set -eu
 
 # REF https://gbiggs.github.io/rosjp_ros2_intro/computer_prep_linux.html
 
-CHOOSE_ROS_DISTRO=foxy # or dashing
+CHOOSE_ROS_DISTRO=galactic # or dashing
 INSTALL_PACKAGE=desktop # or ros-base
 
 export DEBIAN_FRONTEND=noninteractive
@@ -55,11 +55,7 @@ fi
 
 sudo apt-get install -yq \
 		ros-$CHOOSE_ROS_DISTRO-gazebo-ros-* \
-		ros-$CHOOSE_ROS_DISTRO-turtlesim \
-        ros-$CHOOSE_ROS_DISTRO-cartographer \
-        ros-$CHOOSE_ROS_DISTRO-cartographer-ros \
-        ros-$CHOOSE_ROS_DISTRO-navigation2 \
-        ros-$CHOOSE_ROS_DISTRO-nav2-bringup
+		ros-$CHOOSE_ROS_DISTRO-turtlesim
 
 # Add ROS2 env values in bash
 grep -F "source /opt/ros/$CHOOSE_ROS_DISTRO/setup.bash" ~/.bashrc ||
