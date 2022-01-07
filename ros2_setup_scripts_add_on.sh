@@ -32,12 +32,41 @@ sudo apt-get install -yq \
 		wget \
 		gnupg
 
-sudo sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list'
-wget http://packages.osrfoundation.org/gazebo.key -O - | sudo apt-key add -
+sudo sh -c 'echo "deb [arch=$(dpkg --print-architecture)] http://packages.ros.org/ros2/ubuntu $(lsb_release -cs) main" > /etc/apt/sources.list.d/ros2-latest.list'
+curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
 sudo apt-get update
+
+#sudo sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list'
+#wget http://packages.osrfoundation.org/gazebo.key -O - | sudo apt-key add -
+#sudo apt-get update
+
+#		ignition-edifice \
+
 sudo apt-get install -yq \
-		ignition-citadel \
-		ros-$CHOOSE_ROS_DISTRO-ros-ign
+		ignition-fortress \
+		libignition-plugin-dev
+
+#sudo apt-get install -yq \
+#		ros-$CHOOSE_ROS_DISTRO-ros-ign \
+
+export IGNITION_VERSION=fortress
+
+#cd /home/developer/ros2_ws
+#mkdir -p src
+#cd src
+
+#git clone https://github.com/osrf/ros_ign.git -b $CHOOSE_ROS_DISTRO
+
+#cd ../
+#rosdep install -r --from-paths src -i -y --rosdistro $CHOOSE_ROS_DISTRO
+
+#source /opt/ros/$CHOOSE_ROS_DISTRO/setup.bash
+
+#catkin_make install
+
+#sudo apt install -yq \
+#		libignition-sensors6-dev \
+#		libignition-gazebo6-dev
 
 sudo apt-get install -yq \
 		ros-$CHOOSE_ROS_DISTRO-joy \
