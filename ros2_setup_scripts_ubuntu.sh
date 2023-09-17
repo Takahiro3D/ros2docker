@@ -10,7 +10,7 @@ set -eu
 
 # REF https://gbiggs.github.io/rosjp_ros2_intro/computer_prep_linux.html
 
-CHOOSE_ROS_DISTRO=galactic # or dashing
+CHOOSE_ROS_DISTRO=humble # or dashing
 INSTALL_PACKAGE=desktop # or ros-base
 
 export DEBIAN_FRONTEND=noninteractive

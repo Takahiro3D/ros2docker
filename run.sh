@@ -1,9 +1,10 @@
-USER_NAME=matomato
-WORKSPACE=workspace/github/ros2docker/ros2_ws
-CHOOSE_ROS_DISTRO=galactic
+USER_NAME=developer
+WORKSPACE=ws
+CHOOSE_ROS_DISTRO=humble
+
+sudo chmod 777 /dev/dri/renderD128
 
 docker run --rm -it --privileged \
-        --gpus all \
 	--net=host \
         --device=/dev/ttyUSB0:/dev/ttyUSB0 \
         --device=/dev/dri/renderD128:/dev/dri/renderD128 \
