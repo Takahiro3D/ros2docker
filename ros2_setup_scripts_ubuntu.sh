@@ -55,7 +55,9 @@ fi
 
 sudo apt-get install -yq \
 		ros-$CHOOSE_ROS_DISTRO-gazebo-ros-* \
-		ros-$CHOOSE_ROS_DISTRO-turtlesim
+		ros-$CHOOSE_ROS_DISTRO-turtlesim \
+		ros-$CHOOSE_ROS_DISTRO-xacro \
+		ros-$CHOOSE_ROS_DISTRO-joint-state-publisher-gui \
 
 # Add ROS2 env values in bash
 grep -F "source /opt/ros/$CHOOSE_ROS_DISTRO/setup.bash" ~/.bashrc ||
