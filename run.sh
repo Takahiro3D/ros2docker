@@ -4,7 +4,7 @@ CHOOSE_ROS_DISTRO=humble
 
 sudo chmod 777 /dev/dri/renderD128
 
-docker run --rm -it --privileged \
+sudo docker run --rm -it --privileged \
 	--net=host \
         --device=/dev/ttyUSB0:/dev/ttyUSB0 \
         --device=/dev/dri/renderD128:/dev/dri/renderD128 \
